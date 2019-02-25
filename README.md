@@ -1,4 +1,4 @@
-# Advisly
+# Advisely
 ### An Education Support Application
 
 ### Sam Elliott, Jens Hansen, Connor Langlois, Eli Legere, Eric Schessler, Spencer Ward
