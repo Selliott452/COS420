@@ -1,29 +1,62 @@
-import React, { Component } from 'react';
-import './Schedule.css';
+// 120 characters     ******************************************************************************************     |
+// @ts-check
 
-/** The Schedule Viewer **/
+import React, { Component } from 'react'
+import PropTypes from "react"
+import './Schedule.css'
 
-class Schedule extends Component {
+/** The Schedule Viewer 
+ * 
+ * 
+ * 
+ * This file should be used as a model for any component we write. As with any good model, it should be updated as we 
+ * find new improvements for our code.
+ * **/
 
 
-    render() {
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <p>
-                        Hello World
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                    </a>
-                </header>
-            </div>
-        );
+/**
+ * Courses to the used throughout the app.
+ * 
+ * TODO: Expand to hold all of the properties of a full course.
+ */
+class Course {
+    /**
+     * @param {string} title
+     * @param {string} department
+     * @param {number} number
+     */
+    constructor(title, department, number) {
+        this.title = title
+        this.department = department
+        this.number = number
     }
+}
+
+ /**
+  * A schedule viewer
+  * 
+  * @param {{ schedule: { time: number, course: Course }[] }} props
+  */
+const Schedule = (props) => {
+    return (
+        <div className="Schedule">
+            {props.schedule.map(/**
+                 * @param {any} day
+                 */
+day => {
+                <ScheduleDay />
+            })}
+        </div>
+    )
+}
+// Schedule.propTypes = {
+//     schedule: PropTypes.arrayOf(PropTypes.shape({
+//         timeslot: PropTypes.arrayOf(null, PropTypes.node)
+//     }))
+// }
+
+const ScheduleDay = () => {
+    return <div />
 }
 
 const ClassBlock = () => {
@@ -31,4 +64,4 @@ const ClassBlock = () => {
     </div>
 }
 
-export default Schedule;
+export default Schedule
