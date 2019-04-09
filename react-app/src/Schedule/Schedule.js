@@ -45,9 +45,9 @@ class Schedule extends Component {
 
         this.state = {
             schedule: [ 
-                { day: 0, courseList: { time: 1300, course: softEng } },
-                { day: 2, courseList: { time: 1300, course: softEng } },
-                { day: 4, courseList: { time: 1300, course: softEng } }
+                { day: 0, courseList: [ { time: 1300, course: softEng } ] },
+                { day: 2, courseList: [ { time: 1300, course: softEng } ] },
+                { day: 4, courseList: [ { time: 1300, course: softEng } ] }
             ]
         }
     }
@@ -55,7 +55,7 @@ class Schedule extends Component {
         return (
             <div className="Schedule">
                 {this.state.schedule.map(/** @param {{ day: number, courseList: { time: number, course: Course }[] }}  day */
-                    day => { return(<ScheduleDay day={day.day} courses={day.courseList} />) }
+                    dayOfCourses => { return(<ScheduleDay day={dayOfCourses.day} courses={dayOfCourses.courseList} />) }
                 )}
             </div>
         )
