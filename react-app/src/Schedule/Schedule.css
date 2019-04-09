@@ -1,0 +1,13 @@
+.Schedule {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(145, 46, 145);
+    display: flex;
+    justify-content: "space-between";
+}
+
+.ScheduleDay {
+    height: 100vh;
+    width: 18vw;
+    background-color: rgb(172, 59, 59);
+}

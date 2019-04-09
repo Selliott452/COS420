@@ -35,7 +35,6 @@ class Course {
  /**
   * A schedule viewer
   * 
-  * @param {{ schedule: {day: number, courseList: { time: number, course: Course }[]}[] }} props
   */
 class Schedule extends Component {
     constructor(props) {
@@ -45,16 +44,18 @@ class Schedule extends Component {
 
         this.state = {
             schedule: [ 
-                { day: 0, courseList: [ { time: 1300, course: softEng } ] },
-                { day: 2, courseList: [ { time: 1300, course: softEng } ] },
-                { day: 4, courseList: [ { time: 1300, course: softEng } ] }
+                { day: "Monday", courseList: [ { time: 1300, course: softEng } ] },
+                { day: "Tuesday", courseList: [] },
+                { day: "Wednesday", courseList: [ { time: 1300, course: softEng } ] },
+                { day: "Thursday", courseList: [] },
+                { day: "Friday", courseList: [ { time: 1300, course: softEng } ] }
             ]
         }
     }
     render() {
         return (
             <div className="Schedule">
-                {this.state.schedule.map(/** @param {{ day: number, courseList: { time: number, course: Course }[] }}  day */
+                {this.state.schedule.map(/** @param {{ day: string, courseList: { time: number, course: Course }[] }}  day */
                     dayOfCourses => { return(<ScheduleDay day={dayOfCourses.day} courses={dayOfCourses.courseList} />) }
                 )}
             </div>
@@ -69,12 +70,12 @@ class Schedule extends Component {
 
 /**
  * 
- * @param {{ day: number, courses: { time: number, course: Course}[] }} props 
+ * @param {{ day: string, courses: { time: number, course: Course}[] }} props 
  */
 const ScheduleDay = (props) => {
     return (
-        <div>
-            
+        <div className="ScheduleDay" >
+            <p>{props.day}</p>
         </div>
     )
 }
