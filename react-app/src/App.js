@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Schedule from './schedule/Schedule';
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,20 +10,17 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Hello World
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div>
+          {/* Set page title */}
+          <Helmet>
+            <title>Advisely</title>
+          </Helmet>
+
+        </div>
+        {/* Set routes for their corresponding URL extensions */}
+        <Route path="/" component={Schedule} />
+      </BrowserRouter>
     );
   }
 }
