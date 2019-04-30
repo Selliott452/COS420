@@ -24,7 +24,7 @@ class App extends Component {
 
         </div>
         {/* Set routes for their corresponding URL extensions */}
-        <Route path="/" component={Login} />
+        <Route exact path="/" component={Login} />
         <Route path="/planning" component={HomePage} />
         <Route path="/scheduling" component={SchedulePage} />
       </BrowserRouter>

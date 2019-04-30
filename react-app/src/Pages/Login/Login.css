@@ -1,3 +1,11 @@
 .LoginPage {
     height: 100vh;
+    background-color: darkslategray;
+}
+
+.LoginField {
+    width: 5vw;
+    height: 5vh;
+    margin: auto;
+    background-color: deeppink;
 }
