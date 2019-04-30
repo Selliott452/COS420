@@ -1,9 +1,14 @@
+// 120 characters     ******************************************************************************************     |
+// @ts-check
+
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Schedule from './schedule/Schedule';
 import logo from './logo.svg';
 import './App.css';
+import Login from './Pages/Login/Login';
+import HomePage from './Pages/Planning/HomePage';
+import SchedulePage from './Pages/Scheduling/SchedulePage';
 
 /* Reserved for the Navigation System */
 
@@ -19,7 +24,9 @@ class App extends Component {
 
         </div>
         {/* Set routes for their corresponding URL extensions */}
-        <Route path="/" component={Schedule} />
+        <Route path="/" component={Login} />
+        <Route path="/planning" component={HomePage} />
+        <Route path="/scheduling" component={SchedulePage} />
       </BrowserRouter>
     );
   }

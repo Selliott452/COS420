@@ -1,0 +1,14 @@
+.HomeFrame {
+    height: 100vh;
+    background-color: goldenrod;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.WelcomeFrame {
+    height: 60vh;
+    width: 20vw;
+    padding: 1%;
+    background-color: firebrick;
+}
