@@ -1,19 +1,19 @@
 class DBManager {
-    static Instance = null;
+    static instance = null;
 
     static getInstance() {
-        if (DBManager.Instance === null)
+        if (DBManager.instance === null)
         {
-            DBManager.Instance = new DBManager();
+            DBManager.instance = new DBManager();
         }
     }
 
     constructor() {
-        if (DBManager.Instance === null) {
-            DBManager.Instance = new DBManager();
+        if (DBManager.instance === null) {
+            DBManager.instance = new DBManager();
         }
 
-        return DBManager.Instance;
+        return DBManager.instance;
     }
 
     getClasses(criteria) {
