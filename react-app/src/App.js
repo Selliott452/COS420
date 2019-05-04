@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { BrowserRouter, Route } from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
 import Login from './Pages/Login/Login';
 import HomePage from './Pages/Planning/HomePage';
