@@ -1,14 +1,13 @@
-// 120 characters     ******************************************************************************************     |
-// @ts-check
-
 import './firestore'
 import firebase from 'firebase';
 
 class DBManager  {
 	static instance = null;
 
+	id = 'default';
+
 	static getInstance() {
-		if (DBManager.instance === null) {
+		if (!DBManager.instance) {
 			DBManager.instance = new DBManager();
 		}
 
@@ -16,20 +15,25 @@ class DBManager  {
 	}
 
 	async getClasses(criteria) {
-		const db = firebase.firestore();
-		//Add the criteria here
-		const coursesRef = db.collection('courses');
-		var query = coursesRef.where('subject', '==', criteria);
+		const coursesRef = firebase.firestore().collection('courses');
+		let courses;
 
-		return await query.get().then(results => results.docs.map(doc => doc.data()));
+		if (!criteria){
+			courses = coursesRef.get();
+		} else {
+			courses = coursesRef.where('subject', '==', criteria).get();
+		}
+
+		return await courses.then(results => results.docs.map(doc => doc.data()));
 	}
 
-	saveSchedule(schedule) {
-		const db = firebase.firestore();
-		const usersRef = db.collection('users').add({
-			classes: []
-		});
+	async getSchedule() {
+		return await firebase.firestore().collection('users').doc(this.id).get().then(doc => doc.data().schedule);
+	}
+
+	async saveSchedule(schedule) {
+		firebase.firestore().collection('users').doc(this.id).set({schedule: JSON.parse(JSON.stringify(schedule))});
 	}
 }
-
+	
 export default DBManager;

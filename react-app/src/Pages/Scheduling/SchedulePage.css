@@ -1,7 +1,15 @@
+.SchedulePageFrame {
+    background-color: cornflowerblue;
+}
+
+.SchedulePageHeader {
+    padding-top: 3vh;
+}
+
 .ScheduleFrame {
-    height: 100vh;
+    height: 88vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: cornflowerblue
+    margin-right: 20px;
 }

@@ -1,6 +1,8 @@
 .SearchFrame {
     height: 40vh;
     width: 30vw;
+    margin-left: 20px;
+    margin-bottom: 20px;
     background-color: transparent;
 }
 

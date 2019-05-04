@@ -1,47 +1,39 @@
-// 120 characters     ******************************************************************************************     |
-// @ts-check
-
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import TextField from '@material-ui/core/TextField'
-import "./Login.css"
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import './Login.css'
+import DBManager from '../../dbManager';
+import '../../firestore'
+import firebase from 'firebase';
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      email: "",
-      password: ""
-    }
+class Login extends Component {
+  
+	provider = new firebase.auth.GoogleAuthProvider();
 
-    this.readEmailAddress = this.readEmailAddress.bind(this)
-    this.readPassword = this.readPassword.bind(this)
-  }
+	componentDidMount() {
+		this.provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+	}
 
-  readEmailAddress(event) {
-    this.setState({ email: event.target.value})
-  }
+	login = () => firebase.auth().signInWithPopup(this.provider).then(result => {
+		DBManager.getInstance().id = result.user.email;
+		this.props.history.push('/scheduling');
+	});
 
-  readPassword(event) {
-    this.setState({ password: event.target.value })
-  }
-
-  render() {
-    // Move to the next page if the username and password work
-    if (this.state.email.match(/@maine.edu/)) {
-      if (this.state.password == "advisely") {
-        return (<Redirect to="/scheduling" />)
-      }
-    }
-
-    return (
-      <div className="LoginPage" >
-        { /* Needs to be passed a function to save the username to a variable */ }
-        <TextField onChange={this.readEmailAddress} autoFocus={true} placeholder="Email Address" />
-        { /* Needs to be passed a function to the save the password to a variable */ }
-        <TextField onChange={this.readPassword} placeholder="Password" />
-      </div>
-    )
-  }
+	render() {
+		return (
+			<div className="LoginPage" >
+				<Typography variant="h4" color='textPrimary' gutterBottom>
+					Welcome to Advisely!
+				</Typography>
+				<Typography variant="subtitle2" color='textPrimary' gutterBottom>
+					Please login with a Google account by clicking the button below.
+				</Typography>
+        		<br/>
+        		<br/>
+				<Button variant="contained" color="primary" onClick={this.login}>Login</Button>
+      		</div>
+		)
+	}
 }
+
+export default Login;

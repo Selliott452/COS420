@@ -21,6 +21,10 @@ class Course {
 		this.tags = tags
 		this.credits = credits
 	}
+
+	static create(obj) {
+		return Object.assign(new Course(), obj);
+	}
 }
 
 export default Course;

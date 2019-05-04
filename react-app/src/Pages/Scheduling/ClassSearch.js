@@ -12,16 +12,14 @@ import "./ClassSearch.css"
 import { withStyles } from '@material-ui/core';
 
 
-let CourseFrame = (props) => {
-	return (
-	<div className="Course">
-		<p className="CourseNumber">{props.details.department} {props.details.number}</p>
-		<p className="CourseTitle">{props.details.title}</p>
-	</div>
-	)
-}
-
-let courseList = []
+// let CourseFrame = (props) => {
+// 	return (
+// 	<div className="Course">
+// 		<p className="CourseNumber">{props.details.department} {props.details.number}</p>
+// 		<p className="CourseTitle">{props.details.title}</p>
+// 	</div>
+// 	)
+// }
 
 const styles = theme => ({
 	root: {
@@ -38,27 +36,28 @@ class ClassSearch extends Component {
 		searchResults: []
 	}
 	
-	constructor(props) {
-		super(props);
-	}
-	
-	search = async ({ target: { value }}) => {
+	search = async event => {
 		const dbManager = DBManager.getInstance();
 
-		const searchResults = await dbManager.getClasses(value)
-			.then(courses => courses.map(course => new Course(course.name, course.number, course.subject, 0, 0, 0, 0)));
+		const searchResults = await (event ? dbManager.getClasses(event.target.value) : dbManager.getClasses()).then(courses =>
+			courses.map(course => new Course(course.name, course.number, course.subject, 0, 0, 0, 0))
+		);
 
     	this.setState({ searchResults });
 	}
 
+	componentDidMount() {
+		this.search();
+	}
+	
 	render() {
 		return (
 			<div className="SearchFrame">
-				<TextField placeholder="Search for classes" onChange={this.search} />
+				<TextField placeholder="Search for classes" onChange={this.search} fullWidth />
 				
         		<List className={this.props.classes.root}>
 					{this.state.searchResults.map(course => (
-						<ListItem button onClick={() => this.props.addClass(course)} >
+						<ListItem button onClick={() => this.props.addClass(course)} key={course.title + course.number + 'item'}>
 							<ListItemText primary={course.subject + course.number + ":\n" + course.title} key={course.title + course.number}/>
 						</ListItem>
 					))}
