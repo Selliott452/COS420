@@ -1,6 +1,10 @@
-import Firestore from "./Firestore"
+// 120 characters     ******************************************************************************************     |
+// @ts-check
 
-export default class DBManager  {
+import './firestore'
+import firebase from 'firebase';
+
+class DBManager  {
 	static instance = null;
 
 	static getInstance() {
@@ -11,22 +15,18 @@ export default class DBManager  {
 		return DBManager.instance;
 	}
 
-	constructor() { 
-		return DBManager.getInstance();
-	}
-
-	getClasses(criteria) {
+	async getClasses(criteria) {
 		const db = firebase.firestore();
 		//Add the criteria here
 		const coursesRef = db.collection('courses');
-		var courses = courseRef.get()
-			.then(doc => !doc.exists ? console.log('No classes') : console.log('Data:', doc.data()))
-			.catch(error => console.log('Error getting class: ', error));
+		var query = coursesRef.where('subject', '==', criteria);
+
+		return await query.get().then(results => results.docs.map(doc => doc.data()));
 	}
 
 	saveSchedule(schedule) {
 		const db = firebase.firestore();
-		const usersRef = db.collections('users').add({
+		const usersRef = db.collection('users').add({
 			classes: []
 		});
 	}

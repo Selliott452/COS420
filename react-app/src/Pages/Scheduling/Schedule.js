@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react'
 import PropTypes from "react"
+import Course from '../../Data/Course'
 import './Schedule.css'
 
 /** The Schedule Viewer 
@@ -12,25 +13,6 @@ import './Schedule.css'
  * This file should be used as a model for any component we write. As with any good model, it should be updated as we 
  * find new improvements for our code.
  * **/
-
-
-/**
- * Courses to the used throughout the app.
- * 
- * TODO: Expand to hold all of the properties of a full course.
- */
-class Course {
-    /**
-     * @param {string} title
-     * @param {string} department
-     * @param {number} number
-     */
-    constructor(title, department, number) {
-        this.title = title
-        this.department = department
-        this.number = number
-    }
-}
 
  /**
   * A schedule viewer

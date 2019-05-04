@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import Schedule from './Schedule';
 import Catalogue from './Catalogue';
 import ClassSearch from './ClassSearch';
-import DBManager from '../../dbManager';
 import "./SchedulePage.css";
 
 /**
@@ -13,12 +12,6 @@ import "./SchedulePage.css";
  */
 
 export default class SchedulePage extends Component {
-	componentDidMount() {
-		const dbManager = DBManager.getInstance();
-
-		dbManager.getClasses();
-	}
-
 	render() {
 		return (
 			<div >

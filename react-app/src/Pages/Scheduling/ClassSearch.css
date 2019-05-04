@@ -1,5 +1,10 @@
 .SearchFrame {
     height: 40vh;
     width: 20vw;
-    background-color: darkgreen;
+    background-color: transparent;
+}
+
+.Course {
+    background-color: white;
+    padding: 5%;
 }
