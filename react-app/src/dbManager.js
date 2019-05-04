@@ -11,17 +11,16 @@ export default class DBManager  {
 		return DBManager.Instance
 	}
 
-	constructor()
-	{ 
+	constructor() { 
 		return DBManager.getInstance();
 	}
 
 	getClasses(criteria) {
 		const db = firebase.firestore();
+		
 		db.settings({
 			timestampsInSnapshots: true
 		});
-		
 	}
 
 	saveSchedule(schedule) {
