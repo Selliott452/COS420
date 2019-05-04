@@ -12,7 +12,7 @@ export default class DBManager
 
     constructor()
     {
-        if (DBManager.myInstace === null)
+        if (DBManager.Instance === null)
         {
             DBManager.Instance = new DBManager();
         }
