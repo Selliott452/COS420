@@ -4,11 +4,9 @@ export default class DBManager
 {
     static Instance = null;
 
-    static getInstance() 
-    {
-        if (DBManager.Instance === null)
-        {
-            DBManager.Instance = new DBManager();
+    static getInstance() {
+        if (DBManager.instance === null) {
+            DBManager.instance = new DBManager();
         }
 
         return DBManager.Instance
@@ -28,8 +26,9 @@ export default class DBManager
         
     }
 
-    saveSchedule(schedule)
-    {
+    saveSchedule(schedule) {
         
     }
 }
+
+export default DBManager;
