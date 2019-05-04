@@ -1,14 +1,14 @@
 import Firestore from "./Firestore"
 
 export default class DBManager  {
-	static Instance = null;
+	static instance = null;
 
 	static getInstance() {
 		if (DBManager.instance === null) {
 			DBManager.instance = new DBManager();
 		}
 
-		return DBManager.Instance
+		return DBManager.instance;
 	}
 
 	constructor() { 
@@ -17,14 +17,18 @@ export default class DBManager  {
 
 	getClasses(criteria) {
 		const db = firebase.firestore();
-		
-		db.settings({
-			timestampsInSnapshots: true
-		});
+		//Add the criteria here
+		const coursesRef = db.collection('courses');
+		var courses = courseRef.get()
+			.then(doc => !doc.exists ? console.log('No classes') : console.log('Data:', doc.data()))
+			.catch(error => console.log('Error getting class: ', error));
 	}
 
 	saveSchedule(schedule) {
-		
+		const db = firebase.firestore();
+		const usersRef = db.collections('users').add({
+			classes: []
+		});
 	}
 }
 
