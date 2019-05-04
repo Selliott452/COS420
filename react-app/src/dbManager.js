@@ -2,8 +2,7 @@ class DBManager {
     static instance = null;
 
     static getInstance() {
-        if (DBManager.instance === null)
-        {
+        if (DBManager.instance === null) {
             DBManager.instance = new DBManager();
         }
     }
