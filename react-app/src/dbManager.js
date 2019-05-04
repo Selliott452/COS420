@@ -1,3 +1,5 @@
+import Firestore from "./Firestore"
+
 export default class DBManager 
 {
     static Instance = null;
@@ -8,21 +10,22 @@ export default class DBManager
         {
             DBManager.Instance = new DBManager();
         }
+
+        return DBManager.Instance
     }
 
     constructor()
-    {
-        if (DBManager.myInstace === null)
-        {
-            DBManager.Instance = new DBManager();
-        }
-
-        return DBManager.Instance;
+    { 
+        return DBManager.getInstance();
     }
 
     getClasses(criteria)
     {
-
+        const db = firebase.firestore();
+        db.settings({
+            timestampsInSnapshots: true
+        });
+        
     }
 
     saveSchedule(schedule)
