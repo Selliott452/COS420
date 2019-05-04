@@ -37,7 +37,7 @@ class Schedule extends Component {
     constructor(props) {
         super(props)
 
-        let softEng = new Course("Software Engineering", "COS", 420)
+        let softEng = new Course("Software Engineering", 420, "COS", "3", "5", [ "required" ], 3)
 
         this.state = {
             schedule: [ 
@@ -76,14 +76,22 @@ class Schedule extends Component {
 const ScheduleDay = (props) => {
     return (
         <div className="ScheduleDay" >
-            <p>{props.day}</p>
+            <div className="ScheduleDayHeader">
+                <p>{props.day}</p>
+            </div>
+            {props.courses.map(courseSection => {
+                return (<CourseSectionFrame details={courseSection.course} />)
+            })}
         </div>
     )
 }
 
-// const ClassBlock = () => {
-//     <div className="ClassBlock">
-//     </div>
-// }
+const CourseSectionFrame = (props) => {
+    return (
+        <div className="CourseSectionFrame">
+            <p>{props.details.department} {props.details.number}</p>
+        </div>
+    )
+}
 
 export default withStyles(styles)(Schedule);
