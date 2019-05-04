@@ -1,32 +1,28 @@
-export default class DBManager 
-{
+class DBManager {
     static Instance = null;
 
-    static getInstance() 
-    {
+    static getInstance() {
         if (DBManager.Instance === null)
         {
             DBManager.Instance = new DBManager();
         }
     }
 
-    constructor()
-    {
-        if (DBManager.Instance === null)
-        {
+    constructor() {
+        if (DBManager.Instance === null) {
             DBManager.Instance = new DBManager();
         }
 
         return DBManager.Instance;
     }
 
-    getClasses(criteria)
-    {
+    getClasses(criteria) {
 
     }
 
-    saveSchedule(schedule)
-    {
+    saveSchedule(schedule) {
         
     }
 }
+
+export default DBManager;
