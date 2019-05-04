@@ -15,8 +15,8 @@ export default class Login extends Component {
       password: ""
     }
 
-    this.readEmailAddress.bind(this)
-    this.readPassword.bind(this)
+    this.readEmailAddress = this.readEmailAddress.bind(this)
+    this.readPassword = this.readPassword.bind(this)
   }
 
   readEmailAddress(event) {
