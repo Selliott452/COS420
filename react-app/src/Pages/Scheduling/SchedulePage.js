@@ -30,11 +30,9 @@ class SchedulePage extends Component {
 		return (
 			<div className="SchedulePageFrame">
 				<div className="SchedulePageHeader">
-					<Button style={{'marginTop': '-10px',
-									'marginLeft': '20px'}} variant="contained" color="primary" onClick={this.logout}>Logout</Button>
-					<Typography variant="h4" color='textPrimary' align="center" gutterBottom>
-						Build a Schedule
-					</Typography>
+					<Button style={{'marginTop': '2%',
+									'marginLeft': '2%'}} variant="contained" color="primary" onClick={this.logout}>Logout</Button>
+					<p className="HeaderText">Build a Schedule</p>
 				</div>
 				<div className="ScheduleFrame" >
 					<ClassSearch addClass={this.addClass} />

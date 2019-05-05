@@ -1,15 +1,28 @@
 .SchedulePageFrame {
-    background-color: cornflowerblue;
+    background-image: url(pages.jpg);
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.HeaderText {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 700;
+    text-decoration-line: underline;
+    color: rgb(0, 0, 0);
 }
 
 .SchedulePageHeader {
-    padding-top: 3vh;
+
 }
 
 .ScheduleFrame {
-    height: 88vh;
+    margin-top: 5%;
+    margin-bottom: 10%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 3%;
+    margin-left: 3%;
 }

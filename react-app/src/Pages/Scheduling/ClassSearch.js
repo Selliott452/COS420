@@ -10,6 +10,7 @@ import DBManager from '../../dbManager';
 import Course from '../../Data/Course'
 import "./ClassSearch.css"
 import { withStyles } from '@material-ui/core';
+import { styled } from '@material-ui/styles';
 
 
 // let CourseFrame = (props) => {
@@ -30,6 +31,12 @@ const styles = theme => ({
 		backgroundColor: theme.palette.background.paper,
 	}
 });
+
+const ClassSearchField = styled(TextField)({
+	backgroundColor: 'white',
+	paddingLeft: '1%',
+	width: '99%'
+})
 
 class ClassSearch extends Component {
 	state = {
@@ -53,7 +60,7 @@ class ClassSearch extends Component {
 	render() {
 		return (
 			<div className="SearchFrame">
-				<TextField placeholder="Search for classes" onChange={this.search} fullWidth />
+				<ClassSearchField placeholder="Search for classes" onChange={this.search} />
 				
         		<List className={this.props.classes.root}>
 					{this.state.searchResults.map(course => (
