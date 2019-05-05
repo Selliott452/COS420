@@ -24,7 +24,7 @@ class SchedulePage extends Component {
 		this.setState({ schedule : (await DBManager.getInstance().getSchedule()).map(course => Course.create(course))});
 	}
 
-	logout = () => this.props.history.push('');
+	logout = () => {global.ID = 'default'; this.props.history.push('');}
 
 	render() {
 		return (
