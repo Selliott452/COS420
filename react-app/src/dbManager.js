@@ -21,7 +21,7 @@ class DBManager  {
 		if (!criteria){
 			courses = coursesRef.get();
 		} else {
-			courses = coursesRef.where('subject', '==', criteria).get();
+			courses = coursesRef.where('subject', '==', criteria.toUpperCase()).get();
 		}
 
 		return await courses.then(results => results.docs.map(doc => doc.data()));
